@@ -118,6 +118,6 @@ body {
 .dropzone--isActive {
   border: dashed 3px green;
 }
-.etc{
-    width: 100px;
+.paddongrid{
+  padding-left: 100px;
 }
