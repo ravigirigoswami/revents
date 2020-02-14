@@ -65,6 +65,7 @@ import EventForm from '../EventForm/EventForm'
             this.setState( ({isOpen}) => ({isOpen: !isOpen}))
     }
    
+    
 
     render() {
         const {events,isOpen} = this.state
