@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import App from './app/layout/App';
 import './index.css'
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
 const renEl = document.getElementById('root')
 let render = () =>{
-    ReactDOM.render(<App />, renEl)    
-}
+    
+    ReactDOM.render(
+        <BrowserRouter>
+             <App />
+        </BrowserRouter>,
+        renEl
+        );
+
+    }
+
 if(module.hot){
     module.hot.accept('./app/layout/App',() =>{
         setTimeout(render);
