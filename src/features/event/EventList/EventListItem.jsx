@@ -43,7 +43,7 @@ class EventListItem extends Component {
                     <Button
                         onClick={() => selectedEvent(event)}
                             as="a" 
-                            color="teal" 
+                            color="teal"  
                             floated="right" 
                             content="View" />
                   </Segment>
