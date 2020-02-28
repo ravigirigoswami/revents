@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app/layout/App';
+import {Provider} from 'react-redux'
 import './index.css'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import { configureStore } from './app/store/configureStore';
 const renEl = document.getElementById('root')
+const store = configureStore()
+console.log(store.getState())
 let render = () =>{
     
     ReactDOM.render(
-        <BrowserRouter>
-             <App />
-        </BrowserRouter>,
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>,
         renEl
         );
-
     }
 
 if(module.hot){

@@ -24,8 +24,9 @@ import SignedinMenu from '../Menus/SignedinMenu'
                         <img src="assets/logo.png" alt="logo" />
                         Re-vents
                       </Menu.Item>
-                      <Menu.Item as={NavLink} to='/events' name="Events" />
-                      <Menu.Item as={NavLink} to='/people' name="People" />
+                        <Menu.Item as={NavLink} to='/events' name="Events" />
+                        <Menu.Item as={NavLink} to='/people' name="People" />
+                        <Menu.Item as={NavLink} to='/test' name="Test" />
                       <Menu.Item>
                         <Button 
                         floated="right" 
@@ -40,5 +41,5 @@ import SignedinMenu from '../Menus/SignedinMenu'
         )
     }
 }
-
-export default withRouter(NavBar) 
+ 
+ export default withRouter(NavBar) 

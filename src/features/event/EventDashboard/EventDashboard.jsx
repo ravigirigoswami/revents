@@ -136,7 +136,7 @@ import cuid from 'cuid'
                <EventForm
                 key={selectedEvent ? selectedEvent.id : 0}
                 updateEvent = {this.handelUpdateEvent}
-                selectedEvent = { selectedEvent}
+                selectedEvent = { selectedEvent } 
                 createEvent={this.handleCreateEvent} 
                 cancelForm = {this.handelFromCancel}
                 />}
