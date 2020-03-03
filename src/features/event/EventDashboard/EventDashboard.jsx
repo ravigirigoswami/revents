@@ -77,6 +77,7 @@ class EventDashboard extends Component {
   render() {
     const { events } = this.props;
     const { isOpen, selectedEvent } = this.state;
+    
     return (
       <Container>
         <Grid>

@@ -6,7 +6,10 @@ import './index.css'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from './app/store/configureStore';
+import ScroolToTop from './app/common/util/ScrollToTop'
 const renEl = document.getElementById('root')
+
+
 const store = configureStore()
 console.log(store.getState())
 let render = () =>{
@@ -14,7 +17,9 @@ let render = () =>{
     ReactDOM.render(
         <Provider store={store}>
             <BrowserRouter>
-                <App />
+            <ScroolToTop>
+               <App />
+            </ScroolToTop>
             </BrowserRouter>
         </Provider>,
         renEl

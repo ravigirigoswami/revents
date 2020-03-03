@@ -9,7 +9,6 @@ state = {
   city:'',
   venue:'',
   hostedBy:''
-
 }
 
   handleFormSubmit = (evt) => {
@@ -58,7 +57,8 @@ state = {
                         name='date'
                         onChange = {this.handleInputChange}  
                         value={date} 
-                        type="date" placeholder="Event Date" />
+                        type="date"
+                        placeholder="Event Date" />
                       </Form.Field>
                       <Form.Field>
                         <label>City</label>
