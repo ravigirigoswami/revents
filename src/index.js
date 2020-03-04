@@ -13,7 +13,6 @@ const renEl = document.getElementById('root')
 const store = configureStore()
 console.log(store.getState())
 let render = () =>{
-    
     ReactDOM.render(
         <Provider store={store}>
             <BrowserRouter>
