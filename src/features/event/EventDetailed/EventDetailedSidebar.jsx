@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Segment, Item, Label } from "semantic-ui-react";
 
 const EventDetailedSidebar = ({ attendees }) => {
+  console.log("attendees ",attendees)
   return (
     <Fragment>
       <Segment
@@ -13,7 +14,7 @@ const EventDetailedSidebar = ({ attendees }) => {
         color="teal"
       >
         {attendees && attendees.length}{" "}
-        {attendees.length === 1 ? "Person" : "People"} Going
+        {attendees && attendees.length === 1 ? "Person" : "People"} Going
       </Segment>
       <Segment attached>
         <Item.Group divided>
@@ -30,7 +31,7 @@ const EventDetailedSidebar = ({ attendees }) => {
 
                 <Item.Image size="tiny" src={attendee.photoURL} />
                 <Item.Content verticalAlign="middle">
-                  <Item.Header as="h3">{attendee.name}</Item.Header>
+            <Item.Header as="h3">{attendee.name}</Item.Header>
                 </Item.Content>
               </Item>
             ))}
