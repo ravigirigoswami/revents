@@ -16,6 +16,7 @@ import {
   hasLengthGreaterThan,
   isNumeric
 } from "revalidate";
+import DateInput from "../../../app/common/form/DateInput";
 
 const mapState = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
@@ -44,7 +45,8 @@ const validate = combineValidators({
     })
   )(),
   city: isRequired({ message: "City is required" }),
-  venue: isRequired({ message: "Venue is requied" })
+  venue: isRequired({ message: "Venue is requied" }),
+  date: isRequired({ message: "Date is requied" })
 });
 
 const category = [
@@ -59,6 +61,10 @@ const category = [
 class EventForm extends Component {
   onFormSubmit = values => {
     if (this.props.initialValues.id) {
+         console.log("typeof(values.date)",typeof(values.date))
+      if(typeof(values.date) !== 'string'){
+        values.date = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(values.date);  
+      }
       this.props.updateEvent(values);
       this.props.history.push(`/events/${this.props.initialValues.id}`);
     } else {
@@ -66,15 +72,24 @@ class EventForm extends Component {
         ...values,
         id: cuid(),
         hostPhotoURL: "./assets/user.png",
-        hostedBy: "Bob"
+        hostedBy: "Bob",
       };
+      
+      newEvent.date = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(newEvent.date);
+      console.log("newEventttttt ",newEvent)
       this.props.createEvent(newEvent);
       this.props.history.push(`/events`);
     }
   };
 
   render() {
-    const { initialValues, history, invalid, submitting, pristine } = this.props;
+    const {
+      initialValues,
+      history,
+      invalid,
+      submitting,
+      pristine
+    } = this.props;
     return (
       <Grid>
         <Grid.Column width={10}>
@@ -116,10 +131,17 @@ class EventForm extends Component {
               />
               <Field
                 name="date"
-                component={TextInput}
+                component={DateInput}
                 placeholder="Event date"
+                dateFormat="dd LLLL yyyy h:mm:a"
+                showTimeSelect
+                timeFormat="HH:mm"
               />
-              <Button disabled={invalid || submitting || pristine} positive type="submit">
+              <Button
+                disabled={invalid || submitting || pristine}
+                positive
+                type="submit"
+              >
                 Submit
               </Button>
               <Button
