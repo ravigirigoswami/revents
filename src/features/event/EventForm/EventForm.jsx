@@ -8,15 +8,13 @@ import TextInput from "../../../app/common/form/TextInput";
 import TextArea from "../../../app/common/form/TextArea";
 import SelectInput from "../../../app/common/form/SelectInput";
 import {
-  createValidator,
   composeValidators,
   combineValidators,
   isRequired,
-  hasLengthLessThan,
-  hasLengthGreaterThan,
-  isNumeric
+  hasLengthGreaterThan
 } from "revalidate";
 import DateInput from "../../../app/common/form/DateInput";
+import PlaceInput from "../../../app/common/form/PlaceInput";
 
 const mapState = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
@@ -61,9 +59,16 @@ const category = [
 class EventForm extends Component {
   onFormSubmit = values => {
     if (this.props.initialValues.id) {
-         console.log("typeof(values.date)",typeof(values.date))
-      if(typeof(values.date) !== 'string'){
-        values.date = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(values.date);  
+      console.log("typeof(values.date)", typeof values.date);
+      if (typeof values.date !== "string") {
+        values.date = new Intl.DateTimeFormat("en-US", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        }).format(values.date);
       }
       this.props.updateEvent(values);
       this.props.history.push(`/events/${this.props.initialValues.id}`);
@@ -72,11 +77,18 @@ class EventForm extends Component {
         ...values,
         id: cuid(),
         hostPhotoURL: "./assets/user.png",
-        hostedBy: "Bob",
+        hostedBy: "Bob"
       };
-      
-      newEvent.date = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(newEvent.date);
-      console.log("newEventttttt ",newEvent)
+
+      newEvent.date = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      }).format(newEvent.date);
+      console.log("newEventttttt ", newEvent);
       this.props.createEvent(newEvent);
       this.props.history.push(`/events`);
     }
@@ -121,12 +133,12 @@ class EventForm extends Component {
               <Header sub color="teal" content="Event Location Details" />
               <Field
                 name="city"
-                component={TextInput}
+                component={PlaceInput}
                 placeholder="Event city"
               />
               <Field
                 name="venue"
-                component={TextInput}
+                component={PlaceInput}
                 placeholder="Event venue"
               />
               <Field
